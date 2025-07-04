@@ -38,6 +38,10 @@ public class Dye {
         registry.register((stack, i) -> this.color.getRGB(), this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem());
     }
 
+    public List<Item> getItems() {
+        return List.of(this.woolBlock.asItem(), this.carpetBlock.asItem(), this.concreteBlock.asItem(), this.terracottaBlock.asItem());
+    }
+
     public static void registerBlockColor(BlockColorRegistry registry) {
         FUCHSIA.registerColors(registry);
         CELESTE.registerColors(registry);
