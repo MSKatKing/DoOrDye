@@ -1,0 +1,6 @@
+{
+  "parent": "do_or_dye:block/custom_color_carpet",
+  "textures": {
+    "wool": "minecraft:block/white_wool"
+  }
+}
