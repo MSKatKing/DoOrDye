@@ -9,10 +9,25 @@ import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dye {
     public static final Dye FUCHSIA = new Dye(0x9D0759, "fuchsia");
+    public static final Dye DRAGONS_BLOOD = new Dye(0x780606, "dragons_blood");
+    public static final Dye CHERRY = new Dye(0xD20A2E, "cherry");
+    public static final Dye CORAL = new Dye(0xF8354A, "coral");
+    public static final Dye LEMON = new Dye(0xFFF700, "lemon");
+    public static final Dye MINT = new Dye(0xADEBB3, "mint");
+    public static final Dye SEAFOAM = new Dye(0x8DDCDC, "seafoam");
+    public static final Dye LAVENDER = new Dye(0xD3D3FF, "lavender");
+    public static final Dye ROYAL_PURPLE = new Dye(0x6C3BAA, "royal_purple");
+    public static final Dye INDIGO = new Dye(0x560591, "indigo");
+    public static final Dye BLUSH = new Dye(0xFF7782, "blush");
     public static final Dye CELESTE = new Dye(0xB2FFFF, "celeste");
+    public static final Dye BLAZING_RED = new Dye(0xFF0054, "blazing_red");
+
+    public static Dye[] dyes() { return new Dye[]{FUCHSIA, DRAGONS_BLOOD, CHERRY, CORAL, LEMON, MINT, SEAFOAM, LAVENDER, ROYAL_PURPLE, INDIGO, BLUSH, CELESTE, BLAZING_RED}; }
 
     private final Color color;
 
@@ -43,13 +58,22 @@ public class Dye {
     }
 
     public static void registerBlockColor(BlockColorRegistry registry) {
-        FUCHSIA.registerColors(registry);
-        CELESTE.registerColors(registry);
+        for (Dye dye : dyes())
+            dye.registerColors(registry);
     }
 
     public static void registerItemColor(ItemColorRegistry registry) {
-        FUCHSIA.registerColors(registry);
-        CELESTE.registerColors(registry);
+        for (Dye dye : dyes())
+            dye.registerColors(registry);
+    }
+
+    public static List<Item> getColoredBlocksItems() {
+        List<Item> list = new ArrayList<>();
+
+        for (Dye dye : dyes())
+            list.addAll(dye.getItems());
+
+        return list;
     }
 
     public static void registerDyes() { }
