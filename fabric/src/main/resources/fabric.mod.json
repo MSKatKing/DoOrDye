@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "com.dinoslice.doordye.DoOrDye"
+    ],
+    "client": [
+      "com.dinoslice.doordye.client.DoOrDyeClient"
     ]
   },
   "mixins": [
