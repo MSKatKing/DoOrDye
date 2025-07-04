@@ -8,7 +8,6 @@ import net.neoforged.fml.common.Mod;
 public class DoOrDye {
 
     public DoOrDye(IEventBus eventBus) {
-        Constants.LOG.info("Hello NeoForge world!");
         CommonClass.init();
     }
 }
