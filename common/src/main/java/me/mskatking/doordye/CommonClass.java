@@ -13,5 +13,6 @@ public class CommonClass {
 
     public static void register() {
         Dye.registerDyes();
+        DoOrDyeItems.registerItems();
     }
 }
