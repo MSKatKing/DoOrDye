@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.dinoslice.doordye.DoOrDye"
+      "me.mskatking.doordye.DoOrDye"
     ],
     "client": [
-      "com.dinoslice.doordye.client.DoOrDyeClient"
+      "me.mskatking.doordye.client.DoOrDyeClient"
     ]
   },
   "mixins": [
