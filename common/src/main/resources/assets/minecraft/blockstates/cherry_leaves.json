@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "growable=false": {
+      "model": "minecraft:block/cherry_leaves"
+    },
+    "growable=true,age=0": {
+      "model": "minecraft:block/oak_leaves"
+    },
+    "growable=true,age=1": {
+      "model": "minecraft:block/birch_leaves"
+    },
+    "growable=true,age=2": {
+      "model": "minecraft:block/spruce_leaves"
+    },
+    "growable=true,age=3": {
+      "model": "minecraft:block/acacia_leaves"
+    },
+    "growable=true,age=4": {
+      "model": "minecraft:block/jungle_leaves"
+    },
+    "growable=true,age=5": {
+      "model": "minecraft:block/emerald_ore"
+    }
+  }
+}
