@@ -16,7 +16,7 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
         this.inner = inner;
     }
 
-    private ItemStack findItemStack(ItemLike item) {
+    private Optional<ItemStack> findItemStack(ItemLike item) {
         AtomicReference<ItemStack> out = new AtomicReference<>();
         inner.getEntries().forEach(entry -> {
             if (entry.getKey().is(item.asItem())) {
@@ -24,7 +24,7 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
             }
         });
 
-        return Optional.ofNullable(out.get()).orElse(new ItemStack(item));
+        return Optional.ofNullable(out.get());
     }
 
     @Override
@@ -34,11 +34,21 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
 
     @Override
     public void putBefore(ItemLike before, ItemLike stack) {
-        inner.getEntries().putBefore(findItemStack(before), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        Optional<ItemStack> beforeStack = findItemStack(before);
+        if (beforeStack.isPresent()) {
+            inner.getEntries().putBefore(beforeStack.get(), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        } else {
+            append(stack);
+        }
     }
 
     @Override
     public void putAfter(ItemLike after, ItemLike stack) {
-        inner.getEntries().putAfter(findItemStack(after), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        Optional<ItemStack> afterStack = findItemStack(after);
+        if (afterStack.isPresent()) {
+            inner.getEntries().putAfter(afterStack.get(), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        } else {
+            append(stack);
+        }
     }
 }
