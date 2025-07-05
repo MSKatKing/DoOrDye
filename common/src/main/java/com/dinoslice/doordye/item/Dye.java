@@ -16,7 +16,7 @@ public class Dye {
     public static final Dye FUCHSIA = new Dye(0x9D0759, "fuchsia");
     public static final Dye DRAGONS_BLOOD = new Dye(0x780606, "dragons_blood");
     public static final Dye CHERRY = new Dye(0xD20A2E, "cherry");
-    public static final Dye CORAL = new Dye(0xF8354A, "coral");
+    public static final Dye CORAL = new Dye(0xFF7F50, "coral");
     public static final Dye LEMON = new Dye(0xFFF700, "lemon");
     public static final Dye MINT = new Dye(0xADEBB3, "mint");
     public static final Dye SEAFOAM = new Dye(0x8DDCDC, "seafoam");
