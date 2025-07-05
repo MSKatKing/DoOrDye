@@ -39,6 +39,10 @@ public class DoOrDye {
             for (Dye dye : Dye.dyes()) {
                 dye.addItemsToInventory(CreativeTab.Ingredients, helper);
             }
+        } else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            for (Dye dye : Dye.dyes()) {
+                dye.addItemsToInventory(CreativeTab.FoodAndDrinks, helper);
+            }
         }
     }
 
