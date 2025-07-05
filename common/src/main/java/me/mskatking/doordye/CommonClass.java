@@ -15,4 +15,11 @@ public class CommonClass {
         Dye.registerDyes();
         DoOrDyeItems.registerItems();
     }
+
+    public static void addItemsToCreativeTab(CreativeTab tab, ICreativeTabHelper inserter) {
+        for (Dye dye : Dye.dyes())
+            dye.addItemsToInventory(tab, inserter);
+
+        DoOrDyeItems.addItemsToCreativeTabs(tab, inserter);
+    }
 }
