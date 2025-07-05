@@ -7,6 +7,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 @Mod(Constants.MOD_ID)
 public class DoOrDye {
@@ -17,6 +18,7 @@ public class DoOrDye {
         eventBus.addListener(DoOrDye::onRegisterBlockColors);
         eventBus.addListener(DoOrDye::onRegisterItemColors);
         eventBus.addListener(DoOrDye::onBuildContents);
+        eventBus.addListener(DoOrDye::onRegister);
     }
 
     public static void onRegisterBlockColors(RegisterColorHandlersEvent.Block event) {
@@ -31,5 +33,9 @@ public class DoOrDye {
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
             event.acceptAll(Dye.getColoredBlocksItems().stream().map(Item::getDefaultInstance).toList());
         }
+    }
+
+    public static void onRegister(RegisterEvent event) {
+        CommonClass.register();
     }
 }

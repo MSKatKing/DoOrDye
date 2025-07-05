@@ -7,5 +7,6 @@ public class DoOrDye implements ModInitializer {
     @Override
     public void onInitialize() {
         CommonClass.init();
+        CommonClass.register();
     }
 }
