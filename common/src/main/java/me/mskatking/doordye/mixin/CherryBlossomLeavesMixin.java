@@ -54,6 +54,30 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
     }
 
     @Override
+    protected @NotNull ItemInteractionResult useItemOn(ItemStack pStack, @NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHitResult) {
+        InteractionResult res = this.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
+
+        if (pStack.is(Items.SHEARS)) {
+            pLevel.setBlockAndUpdate(pPos, pState.setValue(CAN_GROW, false).setValue(GROWTH_FACTOR, 0));
+            return ItemInteractionResult.SUCCESS;
+        }
+
+        return res == InteractionResult.SUCCESS ? ItemInteractionResult.SUCCESS : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull BlockHitResult pHitResult) {
+        if (pState.getValue(GROWTH_FACTOR) == 5) {
+            Block.popResourceFromFace(pLevel, pPos, pHitResult.getDirection(), new ItemStack(DoOrDyeItems.CHERRIES, pLevel.random.nextInt(2, 6)));
+            pLevel.setBlockAndUpdate(pPos, pState.setValue(GROWTH_FACTOR, 0));
+            pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
+            return InteractionResult.SUCCESS;
+        }
+
+        return InteractionResult.PASS;
+    }
+
+    @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder, CallbackInfo callbackInfo) {
         pBuilder.add(GROWTH_FACTOR, CAN_GROW);
     }
