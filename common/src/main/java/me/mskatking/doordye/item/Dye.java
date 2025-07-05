@@ -1,6 +1,7 @@
 package me.mskatking.doordye.item;
 
 import me.mskatking.doordye.registry.CommonBlocks;
+import me.mskatking.doordye.registry.CommonItems;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;
@@ -37,6 +38,8 @@ public class Dye {
     private final Block terracottaBlock;
     private final Block concreteBlock;
 
+    private final Item dyeItem;
+
     public Dye(int hexColor, String id) {
         this.color = new Color(hexColor);
 
@@ -44,6 +47,7 @@ public class Dye {
         this.carpetBlock = CommonBlocks.register(id + "_carpet", CarpetBlock::new, BlockBehaviour.Properties.of(), true);
         this.terracottaBlock = CommonBlocks.register(id + "_terracotta", Block::new, BlockBehaviour.Properties.of(), true);
         this.concreteBlock = CommonBlocks.register(id + "_concrete", Block::new, BlockBehaviour.Properties.of(), true);
+        this.dyeItem = CommonItems.register(id + "_dye", Item::new, new Item.Properties());
     }
 
     public void registerColors(BlockColorRegistry registry) {
@@ -51,11 +55,11 @@ public class Dye {
     }
 
     public void registerColors(ItemColorRegistry registry) {
-        registry.register((stack, i) -> this.color.getRGB(), this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem());
+        registry.register((stack, i) -> this.color.getRGB(), this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem(), this.dyeItem);
     }
 
     public List<Item> getItems() {
-        return List.of(this.woolBlock.asItem(), this.carpetBlock.asItem(), this.concreteBlock.asItem(), this.terracottaBlock.asItem());
+        return List.of(this.woolBlock.asItem(), this.carpetBlock.asItem(), this.concreteBlock.asItem(), this.terracottaBlock.asItem(), this.dyeItem);
     }
 
     public static void registerBlockColor(BlockColorRegistry registry) {
