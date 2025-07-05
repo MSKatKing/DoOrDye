@@ -24,10 +24,11 @@ public class Dye {
     public static final Dye ROYAL_PURPLE = new Dye(0x6C3BAA, "royal_purple");
     public static final Dye INDIGO = new Dye(0x560591, "indigo");
     public static final Dye BLUSH = new Dye(0xFF7782, "blush");
+    public static final Dye VANILLA = new Dye(0xF3E5AB, "vanilla");
     public static final Dye CELESTE = new Dye(0xB2FFFF, "celeste");
     public static final Dye BLAZING_RED = new Dye(0xFF0054, "blazing_red");
 
-    public static Dye[] dyes() { return new Dye[]{FUCHSIA, DRAGONS_BLOOD, CHERRY, CORAL, LEMON, MINT, SEAFOAM, LAVENDER, ROYAL_PURPLE, INDIGO, BLUSH, CELESTE, BLAZING_RED}; }
+    public static Dye[] dyes() { return new Dye[]{FUCHSIA, DRAGONS_BLOOD, CHERRY, CORAL, LEMON, MINT, SEAFOAM, LAVENDER, ROYAL_PURPLE, INDIGO, BLUSH, VANILLA, CELESTE, BLAZING_RED}; }
 
     private final Color color;
 
