@@ -18,11 +18,19 @@ public class FabricCreativeTabHelper implements ICreativeTabHelper {
 
     @Override
     public void putBefore(ItemLike before, ItemLike stack) {
-        inner.addBefore(before, stack);
+        if (before == null) {
+            append(stack);
+        } else {
+            inner.addBefore(before, stack);
+        }
     }
 
     @Override
     public void putAfter(ItemLike after, ItemLike stack) {
-        inner.addAfter(after, stack);
+        if (after == null) {
+            append(stack);
+        } else {
+            inner.addAfter(after, stack);
+        }
     }
 }

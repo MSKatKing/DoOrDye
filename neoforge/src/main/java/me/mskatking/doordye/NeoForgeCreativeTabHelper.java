@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
+import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -16,7 +17,11 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
         this.inner = inner;
     }
 
-    private Optional<ItemStack> findItemStack(ItemLike item) {
+    private Optional<ItemStack> findItemStack(@Nullable ItemLike item) {
+        if (item == null) {
+            return Optional.empty();
+        }
+
         AtomicReference<ItemStack> out = new AtomicReference<>();
         inner.getEntries().forEach(entry -> {
             if (entry.getKey().is(item.asItem())) {
@@ -33,7 +38,7 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
     }
 
     @Override
-    public void putBefore(ItemLike before, ItemLike stack) {
+    public void putBefore(@Nullable ItemLike before, ItemLike stack) {
         Optional<ItemStack> beforeStack = findItemStack(before);
         if (beforeStack.isPresent()) {
             inner.getEntries().putBefore(beforeStack.get(), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -43,7 +48,7 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
     }
 
     @Override
-    public void putAfter(ItemLike after, ItemLike stack) {
+    public void putAfter(@Nullable ItemLike after, ItemLike stack) {
         Optional<ItemStack> afterStack = findItemStack(after);
         if (afterStack.isPresent()) {
             inner.getEntries().putAfter(afterStack.get(), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
