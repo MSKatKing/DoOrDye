@@ -1,8 +1,8 @@
 package me.mskatking.doordye;
 
+import me.mskatking.doordye.item.CreativeTab;
 import me.mskatking.doordye.item.Dye;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -30,8 +30,15 @@ public class DoOrDye {
     }
 
     public static void onBuildContents(BuildCreativeModeTabContentsEvent event) {
+        NeoForgeCreativeTabHelper helper = new NeoForgeCreativeTabHelper(event);
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
-            event.acceptAll(Dye.getColoredBlocksItems().stream().map(Item::getDefaultInstance).toList());
+            for (Dye dye : Dye.dyes()) {
+                dye.addItemsToInventory(CreativeTab.ColoredBlocks, helper);
+            }
+        } else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            for (Dye dye : Dye.dyes()) {
+                dye.addItemsToInventory(CreativeTab.Ingredients, helper);
+            }
         }
     }
 

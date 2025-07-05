@@ -5,13 +5,10 @@ import me.mskatking.doordye.registry.CommonItems;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Dye {
     public static final Dye FUCHSIA = new Dye(0x9D0759, "fuchsia");
@@ -31,7 +28,7 @@ public class Dye {
 
     public static Dye[] dyes() { return new Dye[]{FUCHSIA, DRAGONS_BLOOD, CHERRY, CORAL, LEMON, MINT, SEAFOAM, LAVENDER, ROYAL_PURPLE, INDIGO, BLUSH, VANILLA, CELESTE, BLAZING_RED}; }
 
-    private final Color color;
+    private final int color;
 
     private final Block woolBlock;
     private final Block carpetBlock;
@@ -41,7 +38,7 @@ public class Dye {
     private final Item dyeItem;
 
     public Dye(int hexColor, String id) {
-        this.color = new Color(hexColor);
+        this.color = hexColor;
 
         this.woolBlock = CommonBlocks.register(id + "_wool", Block::new, BlockBehaviour.Properties.of(), true);
         this.carpetBlock = CommonBlocks.register(id + "_carpet", CarpetBlock::new, BlockBehaviour.Properties.of(), true);
@@ -51,15 +48,23 @@ public class Dye {
     }
 
     public void registerColors(BlockColorRegistry registry) {
-        registry.register((blockState, blockAndTintGetter, blockPos, i) -> this.color.getRGB(), this.woolBlock, this.concreteBlock, this.terracottaBlock, this.concreteBlock);
+        registry.register((blockState, blockAndTintGetter, blockPos, i) -> this.color, this.woolBlock, this.concreteBlock, this.terracottaBlock, this.concreteBlock);
     }
 
     public void registerColors(ItemColorRegistry registry) {
-        registry.register((stack, i) -> this.color.getRGB(), this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem(), this.dyeItem);
+        registry.register((stack, i) -> this.color, this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem(), this.dyeItem);
     }
 
-    public List<Item> getItems() {
-        return List.of(this.woolBlock.asItem(), this.carpetBlock.asItem(), this.concreteBlock.asItem(), this.terracottaBlock.asItem(), this.dyeItem);
+    public void addItemsToInventory(CreativeTab tab, ICreativeTabHelper inserter) {
+        switch (tab) {
+            case ColoredBlocks -> {
+                inserter.putAfter(Items.WHITE_WOOL, this.woolBlock);
+                inserter.append(this.carpetBlock);
+                inserter.append(this.concreteBlock);
+                inserter.append(this.terracottaBlock);
+            }
+            case Ingredients -> inserter.append(this.dyeItem);
+        }
     }
 
     public static void registerBlockColor(BlockColorRegistry registry) {
@@ -70,15 +75,6 @@ public class Dye {
     public static void registerItemColor(ItemColorRegistry registry) {
         for (Dye dye : dyes())
             dye.registerColors(registry);
-    }
-
-    public static List<Item> getColoredBlocksItems() {
-        List<Item> list = new ArrayList<>();
-
-        for (Dye dye : dyes())
-            list.addAll(dye.getItems());
-
-        return list;
     }
 
     public static void registerDyes() { }
