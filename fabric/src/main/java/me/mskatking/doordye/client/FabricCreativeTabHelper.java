@@ -1,6 +1,6 @@
 package me.mskatking.doordye.client;
 
-import me.mskatking.doordye.item.ICreativeTabHelper;
+import me.mskatking.doordye.inventory.ICreativeTabHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.minecraft.world.level.ItemLike;
 

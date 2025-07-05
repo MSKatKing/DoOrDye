@@ -1,5 +1,7 @@
 package me.mskatking.doordye.item;
 
+import me.mskatking.doordye.inventory.CreativeTab;
+import me.mskatking.doordye.inventory.ICreativeTabHelper;
 import me.mskatking.doordye.registry.CommonBlocks;
 import me.mskatking.doordye.registry.CommonItems;
 import net.minecraft.client.color.block.BlockColor;

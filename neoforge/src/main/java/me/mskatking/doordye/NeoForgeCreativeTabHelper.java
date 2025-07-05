@@ -1,6 +1,6 @@
 package me.mskatking.doordye;
 
-import me.mskatking.doordye.item.ICreativeTabHelper;
+import me.mskatking.doordye.inventory.ICreativeTabHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -34,11 +34,15 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
 
     @Override
     public void append(ItemLike stack) {
+        if (findItemStack(stack).isPresent()) return; // Don't add items more than once.
+
         inner.accept(stack);
     }
 
     @Override
     public void putBefore(@Nullable ItemLike before, ItemLike stack) {
+        if (findItemStack(stack).isPresent()) return; // Don't add items more than once.
+
         Optional<ItemStack> beforeStack = findItemStack(before);
         if (beforeStack.isPresent()) {
             inner.getEntries().putBefore(beforeStack.get(), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -49,6 +53,8 @@ public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
 
     @Override
     public void putAfter(@Nullable ItemLike after, ItemLike stack) {
+        if (findItemStack(stack).isPresent()) return; // Don't add items more than once.
+
         Optional<ItemStack> afterStack = findItemStack(after);
         if (afterStack.isPresent()) {
             inner.getEntries().putAfter(afterStack.get(), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

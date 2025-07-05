@@ -1,8 +1,7 @@
-package me.mskatking.doordye.item;
+package me.mskatking.doordye.inventory;
 
 import net.minecraft.world.level.ItemLike;
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public interface ICreativeTabHelper {
     void append(ItemLike item);
