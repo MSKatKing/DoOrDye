@@ -1,6 +1,6 @@
 package me.mskatking.doordye.client;
 
-import me.mskatking.doordye.item.CreativeTab;
+import me.mskatking.doordye.CommonClass;
 import me.mskatking.doordye.inventory.CreativeTab;
 import me.mskatking.doordye.item.Dye;
 import net.fabricmc.api.ClientModInitializer;
@@ -15,17 +15,15 @@ public class DoOrDyeClient implements ClientModInitializer {
         Dye.registerItemColor(ColorProviderRegistry.ITEM::register);
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> {
-            FabricCreativeTabHelper helper = new FabricCreativeTabHelper(entries);
-            for (Dye dye : Dye.dyes()) {
-                dye.addItemsToInventory(CreativeTab.ColoredBlocks, helper);
-            }
+            CommonClass.addItemsToCreativeTab(CreativeTab.ColoredBlocks, new FabricCreativeTabHelper(entries));
         });
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
-            FabricCreativeTabHelper helper = new FabricCreativeTabHelper(entries);
-            for (Dye dye : Dye.dyes()) {
-                dye.addItemsToInventory(CreativeTab.Ingredients, helper);
-            }
+            CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, new FabricCreativeTabHelper(entries));
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
+            CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, new FabricCreativeTabHelper(entries));
         });
     }
 }

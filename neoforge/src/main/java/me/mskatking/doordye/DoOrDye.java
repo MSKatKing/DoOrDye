@@ -32,17 +32,11 @@ public class DoOrDye {
     public static void onBuildContents(BuildCreativeModeTabContentsEvent event) {
         NeoForgeCreativeTabHelper helper = new NeoForgeCreativeTabHelper(event);
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
-            for (Dye dye : Dye.dyes()) {
-                dye.addItemsToInventory(CreativeTab.ColoredBlocks, helper);
-            }
+            CommonClass.addItemsToCreativeTab(CreativeTab.ColoredBlocks, helper);
         } else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            for (Dye dye : Dye.dyes()) {
-                dye.addItemsToInventory(CreativeTab.Ingredients, helper);
-            }
+            CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, helper);
         } else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            for (Dye dye : Dye.dyes()) {
-                dye.addItemsToInventory(CreativeTab.FoodAndDrinks, helper);
-            }
+            CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, helper);
         }
     }
 
