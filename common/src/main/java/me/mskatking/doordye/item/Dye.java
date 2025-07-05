@@ -14,6 +14,8 @@ import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.ConcretePowderBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import java.util.function.BiConsumer;
+
 public class Dye {
     public static final Dye DRAGONS_BLOOD = new Dye(0x780606, "dragons_blood", new ItemLike[]{Items.BROWN_DYE, Items.BROWN_WOOL, Items.BROWN_CARPET, Items.BROWN_CONCRETE, Items.BROWN_CONCRETE_POWDER, Items.BROWN_TERRACOTTA});
     public static final Dye CHERRY = new Dye(0xD20A2E, "cherry", new ItemLike[]{Items.RED_DYE, Items.RED_WOOL, Items.RED_CARPET, Items.RED_CONCRETE, Items.RED_CONCRETE_POWDER, Items.RED_TERRACOTTA});
@@ -59,12 +61,12 @@ public class Dye {
         this.inventoryItemsBefore = inventoryItemsBefore;
     }
 
-    public void registerColors(BlockColorRegistry registry) {
-        registry.register((blockState, blockAndTintGetter, blockPos, i) -> this.color, this.woolBlock, this.concreteBlock, this.terracottaBlock, this.concreteBlock);
+    public void registerBlockColors(BiConsumer<BlockColor, Block[]> registry) {
+        registry.accept((blockState, blockAndTintGetter, blockPos, i) -> this.color, new Block[]{this.woolBlock, this.concreteBlock, this.terracottaBlock, this.concreteBlock, this.concretePowderBlock});
     }
 
-    public void registerColors(ItemColorRegistry registry) {
-        registry.register((stack, i) -> this.color, this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem(), this.dyeItem);
+    public void registerItemsColors(BiConsumer<ItemColor, Item[]> registry) {
+        registry.accept((stack, i) -> this.color, new Item[]{this.woolBlock.asItem(), this.carpetBlock.asItem(), this.terracottaBlock.asItem(), this.concreteBlock.asItem(), this.concretePowderBlock.asItem(), this.dyeItem});
     }
 
     public void addItemsToInventory(CreativeTab tab, ICreativeTabHelper inserter) {
@@ -80,23 +82,15 @@ public class Dye {
         }
     }
 
-    public static void registerBlockColor(BlockColorRegistry registry) {
+    public static void registerBlockColor(BiConsumer<BlockColor, Block[]> registry) {
         for (Dye dye : dyes())
-            dye.registerColors(registry);
+            dye.registerBlockColors(registry);
     }
 
-    public static void registerItemColor(ItemColorRegistry registry) {
+    public static void registerItemColor(BiConsumer<ItemColor, Item[]> registry) {
         for (Dye dye : dyes())
-            dye.registerColors(registry);
+            dye.registerItemsColors(registry);
     }
 
     public static void registerDyes() { }
-
-    public interface BlockColorRegistry {
-        void register(BlockColor color, Block... blocks);
-    }
-
-    public interface ItemColorRegistry {
-        void register(ItemColor color, Item... items);
-    }
 }
