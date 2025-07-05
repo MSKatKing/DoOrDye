@@ -1,6 +1,6 @@
-package com.dinoslice.doordye;
+package me.mskatking.doordye;
 
-import com.dinoslice.doordye.item.Dye;
+import me.mskatking.doordye.item.Dye;
 
 public class CommonClass {
 

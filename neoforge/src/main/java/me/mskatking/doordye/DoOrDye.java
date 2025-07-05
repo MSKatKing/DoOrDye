@@ -1,7 +1,6 @@
-package com.dinoslice.doordye;
+package me.mskatking.doordye;
 
-
-import com.dinoslice.doordye.item.Dye;
+import me.mskatking.doordye.item.Dye;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;

@@ -1,6 +1,6 @@
-package com.dinoslice.doordye.item;
+package me.mskatking.doordye.item;
 
-import com.dinoslice.doordye.registry.CommonBlocks;
+import me.mskatking.doordye.registry.CommonBlocks;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;

@@ -1,6 +1,6 @@
-package com.dinoslice.doordye.platform;
+package me.mskatking.doordye.platform;
 
-import com.dinoslice.doordye.platform.services.IPlatformHelper;
+import me.mskatking.doordye.platform.services.IPlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 

@@ -1,6 +1,6 @@
-package com.dinoslice.doordye.client;
+package me.mskatking.doordye.client;
 
-import com.dinoslice.doordye.item.Dye;
+import me.mskatking.doordye.item.Dye;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;

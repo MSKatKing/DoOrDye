@@ -1,4 +1,4 @@
-package com.dinoslice.doordye.platform.services;
+package me.mskatking.doordye.platform.services;
 
 public interface IPlatformHelper {
 

@@ -1,4 +1,4 @@
-package com.dinoslice.doordye;
+package me.mskatking.doordye;
 
 import net.fabricmc.api.ModInitializer;
 

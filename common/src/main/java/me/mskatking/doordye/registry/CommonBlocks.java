@@ -1,6 +1,6 @@
-package com.dinoslice.doordye.registry;
+package me.mskatking.doordye.registry;
 
-import com.dinoslice.doordye.Constants;
+import me.mskatking.doordye.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
