@@ -1,6 +1,6 @@
 package me.mskatking.doordye;
 
-import me.mskatking.doordye.item.CreativeTab;
+import me.mskatking.doordye.inventory.CreativeTab;
 import me.mskatking.doordye.item.Dye;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
