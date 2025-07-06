@@ -70,7 +70,7 @@ public final class DoOrDyeColor {
     }
 
     public void registerItemColors(BiConsumer<ItemColor, ItemLike[]> registry) {
-        registry.accept((itemStack, i) -> this.color, new ItemLike[]{this.wool, this.carpet, this.terracotta, this.concrete, this.concretePowder, this.dye});
+        registry.accept((itemStack, i) -> this.color | (0xFF << 24), new ItemLike[]{this.wool, this.carpet, this.terracotta, this.concrete, this.concretePowder, this.dye});
     }
 
     public void addItemsToInventory(CreativeTab tab, ICreativeTabHelper inserter) {
