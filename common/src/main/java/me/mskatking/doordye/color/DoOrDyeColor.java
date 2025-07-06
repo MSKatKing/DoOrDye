@@ -77,7 +77,7 @@ public final class DoOrDyeColor {
         switch (tab) {
             case ColoredBlocks -> {
                 inserter.putAfter(this.inventoryColorBefore + "_wool", this.wool);
-                inserter.putAfter(this.inventoryColorBefore + "_carpet", this.wool);
+                inserter.putAfter(this.inventoryColorBefore + "_carpet", this.carpet);
                 inserter.putAfter(this.inventoryColorBefore + "_terracotta", this.terracotta);
                 inserter.putAfter(this.inventoryColorBefore + "_concrete", this.concrete);
                 inserter.putAfter(this.inventoryColorBefore + "_concrete_powder", this.concretePowder);
