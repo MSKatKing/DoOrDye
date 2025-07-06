@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.function.BiConsumer;
 
 public final class DoOrDyeColor {
-    private static final List<DoOrDyeColor> DYES = new ArrayList<>();
+    private static final List<DoOrDyeColor> COLORS = new ArrayList<>();
 
     private final ResourceLocation id;
     private final int color;
@@ -50,7 +50,7 @@ public final class DoOrDyeColor {
 
         this.inventoryColorBefore = inventoryColorBefore.toString();
 
-        DYES.add(this);
+        COLORS.add(this);
     }
 
     public DoOrDyeColor(int hexColor, ResourceLocation colorId, DyeColor minecraftColorBefore) {
@@ -62,7 +62,7 @@ public final class DoOrDyeColor {
     }
 
     public static List<DoOrDyeColor> colors() {
-        return DYES;
+        return COLORS;
     }
 
     public void registerBlockColors(BiConsumer<BlockColor, Block[]> registry) {
@@ -87,10 +87,10 @@ public final class DoOrDyeColor {
     }
 
     public static void registerAllBlockColors(BiConsumer<BlockColor, Block[]> registry) {
-        DYES.forEach(color -> color.registerBlockColors(registry));
+        COLORS.forEach(color -> color.registerBlockColors(registry));
     }
 
     public static void registerAllItemColors(BiConsumer<ItemColor, ItemLike[]> registry) {
-        DYES.forEach(color -> color.registerItemColors(registry));
+        COLORS.forEach(color -> color.registerItemColors(registry));
     }
 }
