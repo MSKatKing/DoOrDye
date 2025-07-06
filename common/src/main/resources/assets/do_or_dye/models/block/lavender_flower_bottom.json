@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "do_or_dye:block/lavender_flower_bottom"
+  }
+}

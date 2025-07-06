@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/vine",
+  "textures": {
+    "particle": "do_or_dye:block/vanilla_vines",
+    "vine": "do_or_dye:block/vanilla_vines"
+  }
+}

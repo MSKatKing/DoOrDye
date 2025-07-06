@@ -14,16 +14,9 @@ public class DoOrDyeClient implements ClientModInitializer {
         Dye.registerBlockColor(ColorProviderRegistry.BLOCK::register);
         Dye.registerItemColor(ColorProviderRegistry.ITEM::register);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> {
-            CommonClass.addItemsToCreativeTab(CreativeTab.ColoredBlocks, new FabricCreativeTabHelper(entries));
-        });
-
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
-            CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, new FabricCreativeTabHelper(entries));
-        });
-
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
-            CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, new FabricCreativeTabHelper(entries));
-        });
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.ColoredBlocks, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.NaturalBlocks, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, new FabricCreativeTabHelper(entries)));
     }
 }

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "do_or_dye:block/lavender_flower_bottom"
+    },
+    "half=upper": {
+      "model": "do_or_dye:block/lavender_flower_top"
+    }
+  }
+}

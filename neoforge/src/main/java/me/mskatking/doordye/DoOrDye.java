@@ -37,6 +37,8 @@ public class DoOrDye {
             CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, helper);
         } else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, helper);
+        } else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            CommonClass.addItemsToCreativeTab(CreativeTab.NaturalBlocks, helper);
         }
     }
 
