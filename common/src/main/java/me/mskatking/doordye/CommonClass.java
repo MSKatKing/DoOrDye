@@ -1,9 +1,10 @@
 package me.mskatking.doordye;
 
 import me.mskatking.doordye.block.DoOrDyeBlocks;
+import me.mskatking.doordye.color.DoOrDyeColor;
+import me.mskatking.doordye.color.DoOrDyeColors;
 import me.mskatking.doordye.inventory.CreativeTab;
 import me.mskatking.doordye.item.DoOrDyeItems;
-import me.mskatking.doordye.item.Dye;
 import me.mskatking.doordye.inventory.ICreativeTabHelper;
 
 public class CommonClass {
@@ -13,15 +14,14 @@ public class CommonClass {
     }
 
     public static void register() {
-        Dye.registerDyes();
+        DoOrDyeColors.registerDyes();
 
         DoOrDyeBlocks.registerBlocks();
         DoOrDyeItems.registerItems();
     }
 
     public static void addItemsToCreativeTab(CreativeTab tab, ICreativeTabHelper inserter) {
-        for (Dye dye : Dye.dyes())
-            dye.addItemsToInventory(tab, inserter);
+        DoOrDyeColor.colors().forEach(color -> color.addItemsToInventory(tab, inserter));
 
         DoOrDyeItems.addItemsToCreativeTabs(tab, inserter);
     }

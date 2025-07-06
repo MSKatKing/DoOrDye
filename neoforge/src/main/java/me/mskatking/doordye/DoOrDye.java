@@ -1,7 +1,7 @@
 package me.mskatking.doordye;
 
+import me.mskatking.doordye.color.DoOrDyeColor;
 import me.mskatking.doordye.inventory.CreativeTab;
-import me.mskatking.doordye.item.Dye;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -22,11 +22,11 @@ public class DoOrDye {
     }
 
     public static void onRegisterBlockColors(RegisterColorHandlersEvent.Block event) {
-        Dye.registerBlockColor(event::register);
+        DoOrDyeColor.registerAllBlockColors(event::register);
     }
 
     public static void onRegisterItemColors(RegisterColorHandlersEvent.Item event) {
-        Dye.registerItemColor(event::register);
+        DoOrDyeColor.registerAllItemColors(event::register);
     }
 
     public static void onBuildContents(BuildCreativeModeTabContentsEvent event) {

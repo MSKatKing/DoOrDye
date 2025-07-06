@@ -2,7 +2,6 @@ package me.mskatking.doordye.client;
 
 import me.mskatking.doordye.CommonClass;
 import me.mskatking.doordye.inventory.CreativeTab;
-import me.mskatking.doordye.item.Dye;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
