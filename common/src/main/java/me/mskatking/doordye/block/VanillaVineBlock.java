@@ -30,6 +30,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 // TODO: needs block texture
+// TODO: needs clean up
+// TODO: blockstate needs to add age models
 public class VanillaVineBlock extends VineBlock implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
