@@ -4,22 +4,22 @@
       "model": "minecraft:block/cherry_leaves"
     },
     "growable=true,age=0": {
-      "model": "minecraft:block/cherry_leaves_age0"
+      "model": "do_or_dye:block/cherry_leaves_age0"
     },
     "growable=true,age=1": {
-      "model": "minecraft:block/cherry_leaves_age1"
+      "model": "do_or_dye:block/cherry_leaves_age1"
     },
     "growable=true,age=2": {
-      "model": "minecraft:block/cherry_leaves_age2"
+      "model": "do_or_dye:block/cherry_leaves_age2"
     },
     "growable=true,age=3": {
-      "model": "minecraft:block/cherry_leaves_age3"
+      "model": "do_or_dye:block/cherry_leaves_age3"
     },
     "growable=true,age=4": {
-      "model": "minecraft:block/cherry_leaves_age4"
+      "model": "do_or_dye:block/cherry_leaves_age4"
     },
     "growable=true,age=5": {
-      "model": "minecraft:block/cherry_leaves_age5"
+      "model": "do_or_dye:block/cherry_leaves_age5"
     }
   }
 }
