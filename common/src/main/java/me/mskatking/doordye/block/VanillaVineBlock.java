@@ -39,7 +39,7 @@ public class VanillaVineBlock extends VineBlock implements BonemealableBlock {
         if (pLevel.getRawBrightness(pPos, 0) >= 9) {
             int age = pState.getValue(AGE);
             // TODO: possibly change growth speed mechanics
-            if (age < 5 && pRandom.nextInt(20 - pLevel.getRawBrightness(pPos, 0)) == 0) {
+            if (age < 3 && pRandom.nextInt(20 - pLevel.getRawBrightness(pPos, 0)) == 0) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(AGE, age + 1));
             }
         }
