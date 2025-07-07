@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "do_or_dye:cherries"
+    }
+  ],
+  "result": {
+    "id": "do_or_dye:cherry_dye",
+    "count": 2
+  }
+}

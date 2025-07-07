@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "do_or_dye:vanilla_beans"
+    }
+  ],
+  "result": {
+    "id": "do_or_dye:vanilla_dye"
+  }
+}

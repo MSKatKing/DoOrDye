@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "do_or_dye:calla_lily"
+    }
+  ],
+  "result": {
+    "id": "do_or_dye:blush_dye",
+    "count": 2
+  }
+}
