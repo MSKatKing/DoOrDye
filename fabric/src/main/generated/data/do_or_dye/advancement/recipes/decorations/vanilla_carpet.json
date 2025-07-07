@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "do_or_dye:vanilla_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vanilla_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "do_or_dye:vanilla_wool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_vanilla_wool"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "do_or_dye:vanilla_carpet"
+    ]
+  }
+}

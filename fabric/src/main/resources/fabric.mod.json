@@ -20,6 +20,9 @@
     ],
     "client": [
       "me.mskatking.doordye.client.DoOrDyeClient"
+    ],
+    "fabric-datagen": [
+      "me.mskatking.doordye.DoOrDyeDataGenerator"
     ]
   },
   "mixins": [
