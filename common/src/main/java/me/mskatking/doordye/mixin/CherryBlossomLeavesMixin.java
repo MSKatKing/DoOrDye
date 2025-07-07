@@ -36,7 +36,9 @@ import java.util.Random;
 @Mixin(CherryLeavesBlock.class)
 public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements BonemealableBlock {
     @Unique
-    private static final IntegerProperty GROWTH_FACTOR = BlockStateProperties.AGE_5;
+    private static final IntegerProperty AGE_2 = BlockStateProperties.AGE_2;
+    @Unique
+    private static final int AGE_MAX = BlockStateProperties.MAX_AGE_2;
 
     @Unique
     private static final BooleanProperty CAN_GROW = BooleanProperty.create("growable");
@@ -50,7 +52,7 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void constructor(BlockBehaviour.Properties p, CallbackInfo callbackInfo) {
-        this.registerDefaultState(this.defaultBlockState().setValue(CAN_GROW, false).setValue(GROWTH_FACTOR, 0));
+        this.registerDefaultState(this.defaultBlockState().setValue(CAN_GROW, false).setValue(AGE_2, 0));
     }
 
     @Override
@@ -58,7 +60,7 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
         InteractionResult res = this.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
 
         if (pStack.is(Items.SHEARS)) {
-            pLevel.setBlockAndUpdate(pPos, pState.setValue(CAN_GROW, false).setValue(GROWTH_FACTOR, 0));
+            pLevel.setBlockAndUpdate(pPos, pState.setValue(CAN_GROW, false).setValue(AGE_2, 0));
             return ItemInteractionResult.SUCCESS;
         }
 
@@ -67,9 +69,9 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
 
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull BlockHitResult pHitResult) {
-        if (pState.getValue(GROWTH_FACTOR) == 5) {
+        if (pState.getValue(AGE_2) == AGE_MAX) {
             Block.popResourceFromFace(pLevel, pPos, pHitResult.getDirection(), new ItemStack(DoOrDyeItems.CHERRIES, pLevel.random.nextInt(2, 6)));
-            pLevel.setBlockAndUpdate(pPos, pState.setValue(GROWTH_FACTOR, 0));
+            pLevel.setBlockAndUpdate(pPos, pState.setValue(AGE_2, 0));
             pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
             return InteractionResult.SUCCESS;
         }
@@ -79,22 +81,22 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
 
     @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder, CallbackInfo callbackInfo) {
-        pBuilder.add(GROWTH_FACTOR, CAN_GROW);
+        pBuilder.add(AGE_2, CAN_GROW);
     }
 
     @Override
     public void getStateForPlacement(BlockPlaceContext context, CallbackInfoReturnable<BlockState> cir) {
-        cir.setReturnValue(cir.getReturnValue().setValue(CAN_GROW, GROW_RANDOM.nextDouble() > (7.0 / 8.0)).setValue(GROWTH_FACTOR, 0));
+        cir.setReturnValue(cir.getReturnValue().setValue(CAN_GROW, GROW_RANDOM.nextDouble() > (7.0 / 8.0)).setValue(AGE_2, 0));
     }
 
     @Override
     public boolean isValidBonemealTarget(@NotNull LevelReader levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return blockState.getValue(GROWTH_FACTOR) != 5 || !blockState.getValue(CAN_GROW);
+        return blockState.getValue(AGE_2) != AGE_MAX || !blockState.getValue(CAN_GROW);
     }
 
     @Override
     public boolean isBonemealSuccess(@NotNull Level level, @NotNull RandomSource randomSource, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return blockState.getValue(GROWTH_FACTOR) != 5 || !blockState.getValue(CAN_GROW);
+        return blockState.getValue(AGE_2) != AGE_MAX || !blockState.getValue(CAN_GROW);
     }
 
     @Override
@@ -102,20 +104,20 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
         if (!blockState.getValue(CAN_GROW)) {
             serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(CAN_GROW, true));
         } else {
-            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(GROWTH_FACTOR, Math.min(blockState.getValue(GROWTH_FACTOR) + 1, 5)));
+            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(AGE_2, Math.min(blockState.getValue(AGE_2) + 1, AGE_MAX)));
         }
     }
 
     @Override
-    protected boolean isRandomlyTicking(BlockState pState) { return pState.getValue(CAN_GROW) && pState.getValue(GROWTH_FACTOR) != 5; }
+    protected boolean isRandomlyTicking(BlockState pState) { return pState.getValue(CAN_GROW) && pState.getValue(AGE_2) != AGE_MAX; }
 
     @Override
     protected void randomTick(@NotNull BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
         if (pState.getValue(CAN_GROW) && pLevel.getRawBrightness(pPos, 0) >= 9) {
-            int age = pState.getValue(GROWTH_FACTOR);
+            int age = pState.getValue(AGE_2);
             // TODO: maybe change this?
-            if (age < 5 && pRandom.nextInt(25 - doOrDye$growthSpeed(pLevel, pPos, pState)) == 0) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(GROWTH_FACTOR, age + 1));
+            if (age < AGE_MAX && pRandom.nextInt(25 - doOrDye$growthSpeed(pLevel, pPos, pState)) == 0) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(AGE_2, age + 1));
             }
         }
     }
