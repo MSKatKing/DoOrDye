@@ -12,7 +12,9 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +25,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class VanillaVineBlock extends VineBlock {
+public class VanillaVineBlock extends VineBlock implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
     public VanillaVineBlock(Properties p_57847_) {
@@ -62,5 +64,24 @@ public class VanillaVineBlock extends VineBlock {
         }
 
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(@NotNull LevelReader levelReader, @NotNull BlockPos blockPos, BlockState blockState) {
+        return blockState.getValue(AGE) != 3;
+    }
+
+    @Override
+    public boolean isBonemealSuccess(@NotNull Level level, @NotNull RandomSource randomSource, @NotNull BlockPos blockPos, BlockState blockState) {
+        return blockState.getValue(AGE) != 3;
+    }
+
+    @Override
+    public void performBonemeal(@NotNull ServerLevel serverLevel, @NotNull RandomSource randomSource, @NotNull BlockPos blockPos, BlockState blockState) {
+        int age = blockState.getValue(AGE);
+
+        if (age != 3) {
+            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(AGE, age + 1));
+        }
     }
 }
