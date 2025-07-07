@@ -7,7 +7,7 @@ import me.mskatking.doordye.inventory.CreativeTab;
 import me.mskatking.doordye.item.DoOrDyeItems;
 import me.mskatking.doordye.inventory.ICreativeTabHelper;
 
-public class CommonClass {
+public class DoOrDyeCommon {
 
     public static void init() {
         Constants.LOG.info("Starting Do or Dye v{}!", Constants.VERSION);

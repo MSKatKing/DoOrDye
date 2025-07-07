@@ -1,6 +1,6 @@
 package me.mskatking.doordye.client;
 
-import me.mskatking.doordye.CommonClass;
+import me.mskatking.doordye.DoOrDyeCommon;
 import me.mskatking.doordye.color.DoOrDyeColor;
 import me.mskatking.doordye.inventory.CreativeTab;
 import net.fabricmc.api.ClientModInitializer;
@@ -14,9 +14,9 @@ public class DoOrDyeClient implements ClientModInitializer {
         DoOrDyeColor.registerAllBlockColors(ColorProviderRegistry.BLOCK::register);
         DoOrDyeColor.registerAllItemColors(ColorProviderRegistry.ITEM::register);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.ColoredBlocks, new FabricCreativeTabHelper(entries)));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.NaturalBlocks, new FabricCreativeTabHelper(entries)));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, new FabricCreativeTabHelper(entries)));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.ColoredBlocks, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.NaturalBlocks, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.Ingredients, new FabricCreativeTabHelper(entries)));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, new FabricCreativeTabHelper(entries)));
     }
 }

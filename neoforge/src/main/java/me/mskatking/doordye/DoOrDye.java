@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 public class DoOrDye {
 
     public DoOrDye(IEventBus eventBus) {
-        CommonClass.init();
+        DoOrDyeCommon.init();
 
         eventBus.addListener(DoOrDye::onRegisterBlockColors);
         eventBus.addListener(DoOrDye::onRegisterItemColors);
@@ -32,17 +32,17 @@ public class DoOrDye {
     public static void onBuildContents(BuildCreativeModeTabContentsEvent event) {
         NeoForgeCreativeTabHelper helper = new NeoForgeCreativeTabHelper(event);
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
-            CommonClass.addItemsToCreativeTab(CreativeTab.ColoredBlocks, helper);
+            DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.ColoredBlocks, helper);
         } else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            CommonClass.addItemsToCreativeTab(CreativeTab.Ingredients, helper);
+            DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.Ingredients, helper);
         } else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            CommonClass.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, helper);
+            DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.FoodAndDrinks, helper);
         } else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-            CommonClass.addItemsToCreativeTab(CreativeTab.NaturalBlocks, helper);
+            DoOrDyeCommon.addItemsToCreativeTab(CreativeTab.NaturalBlocks, helper);
         }
     }
 
     public static void onRegister(RegisterEvent event) {
-        CommonClass.register();
+        DoOrDyeCommon.register();
     }
 }
