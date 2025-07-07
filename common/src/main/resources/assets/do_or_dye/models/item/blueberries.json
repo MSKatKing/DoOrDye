@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "do_or_dye:item/cherries"
+    "layer0": "do_or_dye:item/blueberries"
   }
 }

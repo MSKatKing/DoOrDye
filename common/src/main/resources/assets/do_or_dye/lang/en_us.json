@@ -89,5 +89,11 @@
   "item.do_or_dye.celeste_dye": "Celeste Dye",
   "item.do_or_dye.blazing_red_dye": "Blazing Red Dye",
 
-  "item.do_or_dye.cherries": "Cherries"
+  "block.do_or_dye.calla_lily": "Calla Lily",
+  "block.do_or_dye.vanilla_vines": "Vanilla Vines",
+  "block.do_or_dye.lavender_flower": "Lavender Flower",
+
+  "item.do_or_dye.cherries": "Cherries",
+  "item.do_or_dye.blueberries": "Blueberries",
+  "item.do_or_dye.vanilla_beans": "Vanilla Beans"
 }
