@@ -5,19 +5,10 @@
         "model": "do_or_dye:block/vanilla_vines"
       },
       "when": {
-        "north": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "do_or_dye:block/vanilla_vines"
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
+        "AND": [
+          { "north": "true" },
+          { "height": "1|2|3|4|5|6|7" }
+        ]
       }
     },
     {
@@ -27,93 +18,100 @@
         "y": 90
       },
       "when": {
-        "east": "true"
+        "AND": [
+          { "east": "true" },
+          { "height": "1|2|3|4|5|6|7" }
+        ]
       }
     },
     {
       "apply": {
         "model": "do_or_dye:block/vanilla_vines",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "AND": [
+          { "south": "true" },
+          { "height": "1|2|3|4|5|6|7" }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "do_or_dye:block/vanilla_vines",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "AND": [
+          { "west": "true" },
+          { "height": "1|2|3|4|5|6|7" }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "do_or_dye:block/vanilla_vines_half"
+      },
+      "when": {
+        "AND": [
+          { "north": "true" },
+          { "height": "8" }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "do_or_dye:block/vanilla_vines_half",
         "uvlock": true,
         "y": 90
       },
       "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
+        "AND": [
+          { "east": "true" },
+          { "height": "8" }
+        ]
       }
     },
     {
       "apply": {
-        "model": "do_or_dye:block/vanilla_vines",
+        "model": "do_or_dye:block/vanilla_vines_half",
         "uvlock": true,
         "y": 180
       },
       "when": {
-        "south": "true"
+        "AND": [
+          { "south": "true" },
+          { "height": "8" }
+        ]
       }
     },
     {
       "apply": {
-        "model": "do_or_dye:block/vanilla_vines",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "do_or_dye:block/vanilla_vines",
+        "model": "do_or_dye:block/vanilla_vines_half",
         "uvlock": true,
         "y": 270
       },
       "when": {
-        "west": "true"
+        "AND": [
+          { "west": "true" },
+          { "height": "8" }
+        ]
       }
     },
     {
       "apply": {
-        "model": "do_or_dye:block/vanilla_vines",
-        "uvlock": true,
-        "y": 270
+        "model": "do_or_dye:block/empty"
       },
       "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "do_or_dye:block/vanilla_vines",
-        "uvlock": true,
-        "x": 270
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "do_or_dye:block/vanilla_vines",
-        "uvlock": true,
-        "x": 270
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
+        "OR": [
+          { "up": false },
+          { "north": false },
+          { "south": false },
+          { "east": false },
+          { "west": false }
+        ]
       }
     }
   ]

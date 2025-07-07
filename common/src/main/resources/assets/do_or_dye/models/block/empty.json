@@ -1,0 +1,18 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "all": "do_or_dye:block/empty"
+  },
+  "elements": [{
+    "from": [0, 0, 0],
+    "to": [0, 0, 0],
+    "faces": {
+      "north": { "uv": [0, 0, 0, 0], "texture": "#all" },
+      "south": { "uv": [0, 0, 0, 0], "texture": "#all" },
+      "east": { "uv": [0, 0, 0, 0], "texture": "#all" },
+      "west": { "uv": [0, 0, 0, 0], "texture": "#all" },
+      "up": { "uv": [0, 0, 0, 0], "texture": "#all" },
+      "down": { "uv": [0, 0, 0, 0], "texture": "#all" }
+    }
+  }]
+}

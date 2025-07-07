@@ -1,0 +1,18 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "do_or_dye:block/vanilla_vines",
+    "vine": "do_or_dye:block/vanilla_vines_top"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0.8 ],
+      "to": [ 16, 8, 0.8 ],
+      "shade": false,
+      "faces": {
+        "north": { "uv": [ 16, 0, 0, 8 ], "texture": "#vine" },
+        "south": { "uv": [ 0, 0, 16, 8 ], "texture": "#vine" }
+      }
+    }
+  ]
+}
