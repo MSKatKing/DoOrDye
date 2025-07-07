@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "do_or_dye:block/cherry_leaves_age3"
-  }
-}

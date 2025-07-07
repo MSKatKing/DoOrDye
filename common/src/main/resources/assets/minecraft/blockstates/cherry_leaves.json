@@ -11,15 +11,6 @@
     },
     "growable=true,age=2": {
       "model": "do_or_dye:block/cherry_leaves_age2"
-    },
-    "growable=true,age=3": {
-      "model": "do_or_dye:block/cherry_leaves_age3"
-    },
-    "growable=true,age=4": {
-      "model": "do_or_dye:block/cherry_leaves_age4"
-    },
-    "growable=true,age=5": {
-      "model": "do_or_dye:block/cherry_leaves_age5"
     }
   }
 }
