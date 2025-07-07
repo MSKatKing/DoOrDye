@@ -7,6 +7,7 @@ import me.mskatking.doordye.registry.CommonItems;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.Items;
 
 public class DoOrDyeItems {
     // TODO: all need textures
@@ -18,13 +19,14 @@ public class DoOrDyeItems {
 
     public static void addItemsToCreativeTabs(CreativeTab tab, ICreativeTabHelper inserter) {
         if (tab == CreativeTab.FoodAndDrinks) {
-            inserter.append(CHERRIES);
-            inserter.append(BLUEBERRIES);
-            inserter.append(VANILLA_BEANS);
+            inserter.putAfter(Items.GLOW_BERRIES, CHERRIES);
+            inserter.putBefore(Items.SWEET_BERRIES, BLUEBERRIES);
         } else if (tab == CreativeTab.NaturalBlocks) {
-            inserter.append(DoOrDyeBlocks.VANILLA_VINES.asItem());
-            inserter.append(DoOrDyeBlocks.LAVENDER_FLOWER.asItem());
-            inserter.append(DoOrDyeBlocks.CALLA_LILLY.asItem());
+            inserter.putAfter(Items.TWISTING_VINES, DoOrDyeBlocks.VANILLA_VINES.asItem());
+            inserter.putAfter(Items.PEONY, DoOrDyeBlocks.LAVENDER_FLOWER.asItem());
+            inserter.putAfter(Items.LILY_OF_THE_VALLEY, DoOrDyeBlocks.CALLA_LILY.asItem());
+        } else if (tab == CreativeTab.Ingredients) {
+            inserter.putAfter(Items.HONEYCOMB, VANILLA_BEANS);
         }
     }
 }
