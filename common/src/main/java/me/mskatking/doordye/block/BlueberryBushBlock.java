@@ -32,6 +32,6 @@ public class BlueberryBushBlock extends SweetBerryBushBlock {
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
 
-        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
+        return InteractionResult.PASS;
     }
 }
