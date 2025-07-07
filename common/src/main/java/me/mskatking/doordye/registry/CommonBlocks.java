@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.Function;
 
+// TODO: maybe add a few more helper functions?
 public class CommonBlocks {
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegistryItem) {
         ResourceLocation key = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, id);

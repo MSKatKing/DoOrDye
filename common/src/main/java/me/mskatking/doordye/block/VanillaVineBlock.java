@@ -25,6 +25,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
+// TODO: needs block texture
 public class VanillaVineBlock extends VineBlock implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
@@ -37,6 +38,7 @@ public class VanillaVineBlock extends VineBlock implements BonemealableBlock {
     protected void randomTick(@NotNull BlockState pState, ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
         if (pLevel.getRawBrightness(pPos, 0) >= 9) {
             int age = pState.getValue(AGE);
+            // TODO: possibly change growth speed mechanics
             if (age < 5 && pRandom.nextInt(20 - pLevel.getRawBrightness(pPos, 0)) == 0) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(AGE, age + 1));
             }
@@ -59,6 +61,7 @@ public class VanillaVineBlock extends VineBlock implements BonemealableBlock {
         if (pState.getValue(AGE) == 3) {
             Block.popResourceFromFace(pLevel, pPos, pHitResult.getDirection(), new ItemStack(DoOrDyeItems.VANILLA_BEANS, pLevel.random.nextInt(2, 6)));
             pLevel.setBlockAndUpdate(pPos, pState.setValue(AGE, 0));
+            // TODO: need custom sound
             pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
             return InteractionResult.SUCCESS;
         }

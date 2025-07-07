@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
+// TODO: add better error handling
 public class FabricCreativeTabHelper implements ICreativeTabHelper {
     private final FabricItemGroupEntries inner;
 

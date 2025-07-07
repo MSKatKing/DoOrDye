@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 
 import java.util.function.Function;
 
+// TODO: maybe add a few more helper functions?
 public class CommonItems {
     public static Item register(String name, Function<Item.Properties, Item> itemFactory, Item.Properties properties) {
         ResourceLocation key = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name);

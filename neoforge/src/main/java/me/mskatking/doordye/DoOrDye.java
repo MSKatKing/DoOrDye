@@ -29,6 +29,7 @@ public class DoOrDye {
         DoOrDyeColor.registerAllItemColors(event::register);
     }
 
+    // TODO: add remaining inventory tabs for convenience
     public static void onBuildContents(BuildCreativeModeTabContentsEvent event) {
         NeoForgeCreativeTabHelper helper = new NeoForgeCreativeTabHelper(event);
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {

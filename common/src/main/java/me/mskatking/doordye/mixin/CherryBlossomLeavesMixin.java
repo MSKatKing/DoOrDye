@@ -113,12 +113,14 @@ public final class CherryBlossomLeavesMixin extends LeavesBlockMixin implements 
     protected void randomTick(@NotNull BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
         if (pState.getValue(CAN_GROW) && pLevel.getRawBrightness(pPos, 0) >= 9) {
             int age = pState.getValue(GROWTH_FACTOR);
+            // TODO: maybe change this?
             if (age < 5 && pRandom.nextInt(25 - doOrDye$growthSpeed(pLevel, pPos, pState)) == 0) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(GROWTH_FACTOR, age + 1));
             }
         }
     }
 
+    // TODO: change this method name and maybe tweak mechanics
     @Unique
     private int doOrDye$growthSpeed(@NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull BlockState pState) {
         int brightness = pLevel.getRawBrightness(pPos, 0);

@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
+// TODO: more annotations
 public interface ICreativeTabHelper {
     void append(ItemLike item);
     void putBefore(@Nullable ItemLike before, ItemLike stack);

@@ -1,5 +1,6 @@
 package me.mskatking.doordye.platform.services;
 
+// TODO: remove this because its useless
 public interface IPlatformHelper {
 
     /**

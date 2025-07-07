@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
+// TODO: pretty this class up + error handling
 public class NeoForgeCreativeTabHelper implements ICreativeTabHelper {
     private final BuildCreativeModeTabContentsEvent inner;
 
